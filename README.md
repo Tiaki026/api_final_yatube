@@ -14,9 +14,9 @@ API использует стандартные методы HTTP - GET, POST, P
 
 **В процессе разработки были использованы технологии:**
 
-    Django REST framework (DRF) 3.12
-    Django 3.2
-    Python 3.9
+- Django REST framework (DRF) 3.12
+- Django 3.2
+- Python 3.9
 
 
 ## Как запустить проект:
