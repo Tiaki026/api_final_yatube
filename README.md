@@ -36,14 +36,14 @@ cd api_yatube
 ```
 python -m venv venv
 ```
-    Если у вас Windows OS:
-    ```
-    source venv/Scripts/activate
-    ```
-    Если у вас MacOS/Linux:
-    ```
-    source venv/bin/activate
-    ```
+Если у вас Windows OS:
+```
+source venv/Scripts/activate
+```
+Если у вас MacOS/Linux:
+```
+source venv/bin/activate
+```
 
 ```
 python -m pip install --upgrade pip
