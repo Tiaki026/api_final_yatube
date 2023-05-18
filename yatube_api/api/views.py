@@ -1,4 +1,4 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, mixins
 from django.shortcuts import get_object_or_404
 from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.permissions import (
@@ -51,7 +51,11 @@ class CommentViewSet(viewsets.ModelViewSet):
         serializer.save(author=self.request.user, post=self.get_post())
 
 
-class FollowViewSet(viewsets.ModelViewSet):
+class FollowViewSet(
+    mixins.ListModelMixin,
+    mixins.CreateModelMixin,
+    viewsets.GenericViewSet
+):
     """Вьюсет подписок."""
 
     serializer_class = FollowSerializer
@@ -60,7 +64,7 @@ class FollowViewSet(viewsets.ModelViewSet):
     search_fields = ('following__username',)
 
     def get_queryset(self) -> any:
-        return self.request.user.follower.all()
+        return self.request.user.follower.select_related('following')
 
     def perform_create(self, serializer) -> any:
         return serializer.save(user=self.request.user)
